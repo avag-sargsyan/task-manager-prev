@@ -13,6 +13,11 @@ const app = express();
 
 app.get('/', (req, res) => res.send('Index'));
 
+// Use routes
+app.use('/admin/reports', require('./routes/admin/reports'));
+app.use('/admin/users', require('./routes/admin/users'));
+app.use('/admin/auth', require('./routes/admin/auth'));
+
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
