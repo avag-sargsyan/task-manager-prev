@@ -1,11 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
+
+// Database
+const db = require('./config/database');
+
+db.authenticate()
+    .then(() => console.log('DB connected'))
+    .catch(err => console.log('Error: ' + err))
 
 const app = express();
 
-// Body parser middleware
-app.use(bodyParser.json());
-
+app.get('/', (req, res) => res.send('Index'));
 
 const port = process.env.PORT || 5000;
 
